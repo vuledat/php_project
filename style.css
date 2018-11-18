@@ -1,0 +1,39 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#header{
+	width: 100%;
+	height: 100px;
+	background: blue;
+}
+#menu{
+	background: orange;
+}
+#menu ul li {
+	margin: 20px;
+	display: inline;
+}
+#container{
+	width: 100%;
+	height: 400px;
+	/*display: inline;*/
+	position: relative;
+}
+#content{
+	float: left;
+	width: 75%;
+	height: 100%;
+	background: yellow;
+}
+#sidebar{
+	float: right;
+	width: 25%;
+	height: 100%;
+	background: green;
+}
+#footer{
+	width: 100%;
+	height: 50px;
+	background: pink;
+}
