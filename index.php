@@ -108,4 +108,21 @@ function my_url(){
 include 'scrolltop.php';
 include 'regis.php';
 ?>
+<script>
 
+    function timkiem(str) {
+        var xhttp;
+        if (str == "") {
+            document.getElementById("sanpham_nd").innerHTML = "";
+            return;
+        }
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("sanpham_nd").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "ajax/home_search.php?keyword="+str, true);
+        xhttp.send();
+    }
+</script>
