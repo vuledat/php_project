@@ -110,7 +110,7 @@ while ($row = mysqli_fetch_array($query)) {
       </thead>
       <tbody>
       <?php
-      $sql = "SELECT * FROM sanpham ";
+      $sql = "SELECT *, sanpham.ten as ten,oem.ten as ten_oem FROM sanpham INNER JOIN oem ON sanpham.id_oem = oem.id;";
 	  $query = mysqli_query($con,$sql);
       while ($row= mysqli_fetch_array($query)){
       		if ($row['sl'] == 0) {
@@ -122,7 +122,7 @@ while ($row = mysqli_fetch_array($query)) {
 
           <td><?php echo $row['ten']; ?> </td>
           <td><?php echo $row['gia']; ?> </td>
-          <td><?php echo $row['ncc']; ?> </td>
+          <td><?php echo $row['ten_oem']; ?> </td>
           <td><span class="thumb"><img width="80px" height="auto" src="anh/<?php echo $row['anh']; ?>" /></span></td>
           
           <td><a href="xoasp.php?id=<?php echo $row['id']; ?>" 
