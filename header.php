@@ -37,7 +37,7 @@
 		</div>
 		<div id="header-2" class="row">
 			<div id="logo" class="col-lg-2 col-md-2">
-				<h1><a href="index.php?page=sanpham"><img src="anh/logo.png"></a><span>A.M</span></h1>
+				<h1 style="margin: 0"><a href="index.php?page=sanpham"><img src="anh/logo.png"></a><span>A.M</span></h1>
 			</div>
 			<div id="search" class="col-lg-8 col-md-8" >
 				<form class="" method="get">
@@ -47,7 +47,7 @@
 					
 				</form>
 			</div>
-			<div id="cart" class="col-lg-2 col-md-2" onmouseover="giohang()">
+			<div id="cart" class="col-lg-2 col-md-2" onmouseover="giohang()" >
 				<a href="index.php?pagecart=giohang" style="background: transparent;border: none; font-size: 35px;">
 					<i class="fas fa-shopping-cart text-white">
 						<span style="font-size: 20px"><?php echo $_SESSION["cart_sl"]; ?></span>
@@ -66,18 +66,24 @@
 <style>
     #cart{
         position: relative;
+        padding-top: 15px;
     }
     #cart_item{
+        padding: 0;
+        margin: 0;
         visibility: hidden;
         position: absolute;
         left: -150px;
         width: 300px;
         height: auto;
+        opacity: 0;
         background: #fff3cd;
         z-index: 100;
     }
     #cart:hover #cart_item {
-        visibility: visible
+        visibility: visible;
+        transition: 1s;
+        opacity: 1;
     }
 </style>
 

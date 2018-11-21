@@ -1,7 +1,14 @@
+
+
+
 <div class="col-lg-9">
 
 <?php
-
+	if (!$_SESSION["user"]) {
+		header("Location: ./quantri/index.php");
+	}
+	else{
+		
 	$sql = "SELECT * FROM sanpham ORDER BY id";
 	$query = mysqli_query($con,$sql);
 	if (isset($_SESSION["user"])) {
@@ -48,6 +55,7 @@
 	$_SESSION["cart_id"]= array();
 	//header('location: index.php?pagecart=giohang');
 
+	}
 ?>
 	
 <a class="btn btn-primary text-light" href="<?php echo 'index.php' ?>">Quay lại</a>

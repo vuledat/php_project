@@ -5,7 +5,7 @@ include_once '../quantri/ketnoi.php';
 ?>
 
     <div class="row">
-        <ul class="list-group">
+        <ul class="list-group" style="margin: 0;padding:0;width: 100%;">
 
         <?php
         $thanhtoan=0;
@@ -20,28 +20,35 @@ include_once '../quantri/ketnoi.php';
 
                 ?>
 
+                    <li class="list-group-item">
 
-                    <li class="list-group-item"><?php echo $row['ten'];?></li>
+                            <table style="width: 100%">
+                                <tr>
+                                    <?php
+                                        $str = $row['ten'];
+                                        $result = substr($str, 0, 15);
+                                       
+                                    ?>
+                                    
+                                    <td><?php echo $result;?>...</td>
+                                    <td><img src="./quantri/anh/<?php echo $row['anh'];?>" style="width: 40px; height: auto;"></td>
+                                    <td class="text-danger"><?php echo $row['gia'];?></td>
 
-                <?php
+                                </tr>
+                            </table>
+
+                    </li>
+
+        <?php
                 $k++;
             }
-
         ?>
         </ul>
 
-    </div>
+        <li class="list-group-item text-center" style="width: 100%">
+            Tổng Tiền:
+            <span class="text-danger font-weight-bold"><?php echo $thanhtoan; ?> Đồng</span>
+        </li>
 
-<!--<div class="item-sanpham col-lg-12">-->
-<!--    <div class="card">-->
-<!--        <div class="card-body text-center">-->
-<!--            <img class="card-img-top" height="150" width="150" src="./quantri/anh/--><?php //echo $row['anh'];?><!--">-->
-<!---->
-<!--            <h6 class="card-title">--><?php //echo $row['ten'];?><!--</h6>-->
-<!--            <p class="card-text text-danger">--><?php //echo $row['gia'];?><!--</p>-->
-<!---->
-<!--            <button class="btn btn-danger "><a class=" text-light" href="xoa.php?key=--><?php //echo $k ?><!--">Xóa</a></button>-->
-<!---->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+
+    </div>
