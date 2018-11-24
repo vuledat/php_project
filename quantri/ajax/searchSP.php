@@ -3,7 +3,12 @@ include_once '../ketnoi.php';
 if (isset($_GET['keyword'])){
 
     $keyword = $_GET['keyword'];
-    $sql= "SELECT * FROM sanpham WHERE ten LIKE '%$keyword%'";
+    if ($_GET['keyword'] != '') {
+        $sql= "SELECT * FROM sanpham WHERE ten LIKE '%$keyword%'";
+    }
+    else
+        $sql= "SELECT * FROM sanpham";
+
 }
 $query = mysqli_query($con, $sql);
 

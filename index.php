@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();  
-
+$selectSP = "SELECT sanpham.*,oem.ten as ten_ncc,danhmucsp.ten as ten_dm FROM sanpham INNER JOIN oem ON oem.id = sanpham.id_oem INNER JOIN danhmucsp ON danhmucsp.id = sanpham.id_dm";
 if (empty($_SESSION["cart_id"]) && empty($_SESSION["cart_sl"])) {
 	$_SESSION["cart_id"]=array();
 	$_SESSION["cart_sl"]=0;
@@ -14,19 +14,25 @@ if (isset($_GET['submit'])) {
 		$sql2="SELECT * FROM sanpham WHERE ten LIKE'%$search%'";
 	}
 }
-else
+else{
 	if (isset($_GET['id_dm'])) {
 		$id_dm = $_GET['id_dm'];
-		$sql2 = "SELECT * FROM sanpham WHERE id_dm='$id_dm' ORDER BY id";
+		$sql2 = "select * from sanpham WHERE id_dm='$id_dm' ";
+		
 	}
 
+	elseif (isset($_GET['id_ncc'])) {
+		$id_ncc = $_GET['id_ncc'];
+		$sql2 = "$selectSP WHERE id_oem='$id_ncc' ";
+		
+	}
 	else
-		$sql2 = "SELECT * FROM sanpham ORDER BY id";
-
+		$sql2 = "$selectSP";
+}
 	$sql = "SELECT * FROM danhmucsp";
 	$query = mysqli_query($con, $sql);
 	$query2 = mysqli_query($con, $sql2);
-// if(isset($_SESSION["user"]) && isset($_SESSION["pass"])){
+
 	?>
 
 
@@ -44,6 +50,8 @@ else
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.lazyload.min.js"></script>
 	</head>
 	<body>
 		<?php
@@ -56,9 +64,16 @@ else
 		<div id="menu">
 			<div class="container">
 				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-12" id="menu">
+						<?php
+							include 'menu.php';
+							include 'ncc.php';
+							include 'widget.php';
+						?>
+	
+					</div>
 					<?php
-					include 'menu.php';
-
+					
 
 					if (isset($_GET['pagecart'])) {
 						$pagecart= $_GET['pagecart'];
@@ -125,4 +140,10 @@ include 'regis.php';
         xhttp.open("GET", "ajax/home_search.php?keyword="+str, true);
         xhttp.send();
     }
+</script>
+<script type="text/javascript">
+	$( ".get-tt" ).click(function() {
+	  // document.getElementById('link').innerHTML = "Sản phẩm / " + this.innerHTML;
+	});
+
 </script>

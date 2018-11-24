@@ -5,7 +5,7 @@
 		<div id="header-1">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 col-sm-12">
-					<a href="#">Tải ứng dụng | </a>
+					
 					<a href="#">Kết nối | </a>
 					<a href="#">Trợ giúp <i class="far fa-question-circle"></i></a>
 

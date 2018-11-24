@@ -123,9 +123,10 @@ while ($row = mysqli_fetch_array($query)) {
           <td><?php echo $row['ten']; ?> </td>
           <td><?php echo $row['gia']; ?> </td>
           <td><?php echo $row['ten_oem']; ?> </td>
-          <td><span class="thumb"><img width="80px" height="auto" src="anh/<?php echo $row['anh']; ?>" /></span></td>
-          
-          <td><a href="xoasp.php?id=<?php echo $row['id']; ?>" 
+<!--          <td><span class="thumb"><img width="80px" height="auto" src="anh/--><?php //echo $row['anh']; ?><!--" /></span></td>-->
+            <td><span class="thumb"><img class="lazy-load-item" width="80px" height="auto" src="../anh/load.gif" data-original="anh/<?php echo $row['anh']; ?>" /></span></td>
+
+            <td><a href="xoasp.php?id=<?php echo $row['id']; ?>"
             onclick="return xoa();"><span class="fa fa-trash-alt"></span></a></td>
 
           <td><a href="quantri.php?page=suasp&id=<?php echo $row['id']?>"><span class="fa fa-edit"></span></a></td>

@@ -14,6 +14,8 @@ if(isset($_SESSION["user"])& isset($_SESSION["pass"])){
     <script type="text/javascript" src="../js/bootstrap.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.lazyload.min.js"></script>
 
 </head>
 
@@ -30,6 +32,8 @@ if(isset($_SESSION["user"])& isset($_SESSION["pass"])){
                       <button type="button" class="list-group-item list-group-item-action"><a href="quantri.php?page=dstv">Danh sách thành viên</a></button>
                       <button type="button" class="list-group-item list-group-item-action"><a href="quantri.php?page=qldm">Quản lý danh mục</a></button>
                       <button type="button" class="list-group-item list-group-item-action"><a href="quantri.php?page=qlsp&paging=0">Quản lý sản phẩm</a></button>
+                      <button type="button" class="list-group-item list-group-item-action"><a href="quantri.php?page=qldm">Quản lý Slider</a></button>
+                      <button type="button" class="list-group-item list-group-item-action"><a href="quantri.php?page=qloem">Quản lý nha cung cap </a></button>
                       <button type="button" class="list-group-item list-group-item-action" disabled><a href="logout.php">( <?php echo $_SESSION["user"]; ?>) Đăng xuất</a></button>
                 </div>
             </div>
@@ -43,11 +47,20 @@ if(isset($_SESSION["user"])& isset($_SESSION["pass"])){
                         case 'qldm':
                           include_once './qldm.php';
                           break;
+                        case 'qloem':
+                          include_once './qlncc.php';
+                          break;
                         case 'themdm':
                           include_once './themdm.php';
                           break;
+                        case 'themncc':
+                          include_once './themncc.php';
+                          break;
                         case 'suadm':
                           include_once './suadm.php';
+                          break;
+                        case 'suancc':
+                          include_once './suancc.php';
                           break;
                         case 'dstv':
                           include_once './danhsachtv.php';
@@ -87,4 +100,12 @@ if(isset($_SESSION["user"])& isset($_SESSION["pass"])){
     header('location: index.php');
 }
 ?>
- 
+<script type="text/javascript">
+    $(function() {
+        $("img.lazy-load-item").lazyload({
+            effect : "fadeIn",
+            threshold: 1000,
+            event : "scroll"
+        });
+    });
+</script>

@@ -1,3 +1,6 @@
+<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/jquery.lazyload.min.js"></script>
+
 <?php
 ob_start();
 include_once './ketnoi.php'; 
@@ -65,6 +68,7 @@ if(isset($_SESSION["user"])&& isset($_SESSION["pass"])){
           <th scope="col">Tên Sản Phẩm</th>
           <th scope="col">Giá</th>
           <th scope="col">Danh Mục</th>
+          <th scope="col">SL</th>
           <th scope="col">Ảnh</th>
           <th scope="col">Xóa</th>
           <th scope="col">Sửa</th>
@@ -86,7 +90,13 @@ if(isset($_SESSION["user"])&& isset($_SESSION["pass"])){
           $row2= mysqli_fetch_array($query2);
            echo $row2['ten']; 
           ?> </td>
-          <td><span class="thumb"><img width="80px" height="auto" src="anh/<?php echo $row['anh']; ?>" /></span></td>
+          <td >
+          
+            <?php echo $row['sl']; ?> 
+
+
+          </td>
+          <td><span class="thumb"><img class="lazy-load-item" width="80px" height="auto" src="../anh/load.gif" data-original="anh/<?php echo $row['anh']; ?>" /></span></td>
           
           <td><a href="xoasp.php?id=<?php echo $row['id']; ?>" 
             onclick="return xoa();"><span class="fa fa-trash-alt"></span></a></td>
@@ -129,3 +139,13 @@ for ($i=0; $i <$rowCount/5 ; $i++) {
 <?php
 }
 ?>
+
+<script type="text/javascript">
+    $(function() {
+        $("img.lazy-load-item").lazyload({
+            effect : "fadeIn",
+            threshold: 1000,
+            event : "scroll"
+        });
+    });
+</script>
